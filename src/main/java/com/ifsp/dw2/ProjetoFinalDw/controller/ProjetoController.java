@@ -28,6 +28,11 @@ public class ProjetoController {
         return ResponseEntity.ok(projetoService.getAll());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Projeto> getById(@PathVariable Long id) {
+        return ResponseEntity.ok(projetoService.getProjetoById(id));
+    }
+
     @PostMapping
     public ResponseEntity createProjeto(@RequestBody Projeto projeto){
         Projeto projetoSalvo = projetoService.createProjeto(projeto);

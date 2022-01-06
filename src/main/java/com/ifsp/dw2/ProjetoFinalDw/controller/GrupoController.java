@@ -1,5 +1,7 @@
 package com.ifsp.dw2.ProjetoFinalDw.controller;
 
+import com.ifsp.dw2.ProjetoFinalDw.controller.vo.GrupoRequest;
+import com.ifsp.dw2.ProjetoFinalDw.model.Funcionario;
 import com.ifsp.dw2.ProjetoFinalDw.model.Grupo;
 import com.ifsp.dw2.ProjetoFinalDw.service.GrupoService;
 import java.util.List;
@@ -28,8 +30,13 @@ public class GrupoController {
         return ResponseEntity.ok(grupoService.getAll());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Grupo> getById(@PathVariable Long id) {
+        return ResponseEntity.ok(grupoService.getGrupoById(id));
+    }
+
     @PostMapping
-    public ResponseEntity createGrupo(@RequestBody Grupo grupo){
+    public ResponseEntity createGrupo(@RequestBody GrupoRequest grupo){
         Grupo grupoSalvo = grupoService.createGrupo(grupo);
         return ResponseEntity.status(HttpStatus.CREATED).body(grupoSalvo);
     }

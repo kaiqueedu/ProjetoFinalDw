@@ -28,6 +28,11 @@ public class FuncionarioController {
         return ResponseEntity.ok(funcionarioService.getAll());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Funcionario> getServicoById(@PathVariable Long id) {
+        return ResponseEntity.ok(funcionarioService.getFuncionarioById(id));
+    }
+
     @PostMapping
     public ResponseEntity createFuncionario(@RequestBody Funcionario funcionario){
         Funcionario funcionarioSalvo = funcionarioService.createFuncionario(funcionario);

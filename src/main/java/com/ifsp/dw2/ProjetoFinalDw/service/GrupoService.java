@@ -1,5 +1,6 @@
 package com.ifsp.dw2.ProjetoFinalDw.service;
 
+import com.ifsp.dw2.ProjetoFinalDw.controller.vo.GrupoRequest;
 import com.ifsp.dw2.ProjetoFinalDw.model.Grupo;
 import com.ifsp.dw2.ProjetoFinalDw.repository.GrupoRepository;
 import java.util.List;
@@ -17,7 +18,9 @@ public class GrupoService {
         return repository.findAll();
     }
 
-    public Grupo createGrupo(Grupo grupo) {
+    public Grupo createGrupo(GrupoRequest grupoRequest) {
+        Grupo grupo = new Grupo();
+        grupo.setNome(grupoRequest.getNome());
         return repository.save(grupo);
     }
 
@@ -32,7 +35,7 @@ public class GrupoService {
         repository.delete(grupoSalvo);
     }
 
-    private Grupo getGrupoById(Long id){
+    public Grupo getGrupoById(Long id){
         return repository.findById(id).orElseThrow(null);
     }
 

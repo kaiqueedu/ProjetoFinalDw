@@ -1,5 +1,6 @@
 package com.ifsp.dw2.ProjetoFinalDw.controller;
 
+import com.ifsp.dw2.ProjetoFinalDw.model.Projeto;
 import com.ifsp.dw2.ProjetoFinalDw.model.Setor;
 import com.ifsp.dw2.ProjetoFinalDw.service.SetorService;
 import java.util.List;
@@ -26,6 +27,11 @@ public class SetorController {
     @GetMapping
     public ResponseEntity<List<Setor>> getSetor() {
         return ResponseEntity.ok(setorService.getAll());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Setor> getById(@PathVariable Long id) {
+        return ResponseEntity.ok(setorService.getSetorById(id));
     }
 
     @PostMapping

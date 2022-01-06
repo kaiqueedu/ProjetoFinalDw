@@ -32,7 +32,7 @@ public class SetorService {
         repository.delete(setorSalvo);
     }
 
-    private Setor getSetorById(Long id){
+    public Setor getSetorById(Long id){
         return repository.findById(id).orElseThrow(null);
     }
 
